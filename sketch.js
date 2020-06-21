@@ -25,7 +25,7 @@ function draw(){
     for(var i=0; i<ink.length; i++){
          rect(ink[i][0],ink[0][i],10,10);
     }*/
-    if(inkstate = 1){
+    if(inkstate === 1){
         rect(mouseX,mouseY,5,5);
        }
 }
