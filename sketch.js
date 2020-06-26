@@ -1,35 +1,42 @@
-const Engine = Matter.Engine;
-const World= Matter.World;
-const Bodies = Matter.Bodies;
-const Constraint = Matter.Constraint;
-
-var inkstate = 0;
-var engine, world;
-var position; 
+var database ;
+var ink = [];
 function setup(){
-    var canvas = createCanvas(1200,400);
-    engine = Engine.create();
-    world = engine.world;
-inkreal = new Ink(1333,744,1,1);
-   //ink = new Ink(200,200,50,50);
+    var  canvas =   createCanvas(1500,400);
+    canvas.mousePressed(startInk);
+    database = firebase.database();
+
+}
+
+function startInk(){
+    realtimePath = [] ;
+ ink.push(realtimePath);
+
+
 }
 
 function draw(){
-    background("pink");
-    Engine.update(engine);
-    inkreal.display();
-   /* if(inkstate === 1){
-        var position = [mouseX,mouseY];
-        ink.push(position);
-       }
-    for(var i=0; i<ink.length; i++){
-         rect(ink[i][0],ink[0][i],10,10);
-    }*/
+    background(0);
     
-}
-function mouseDragged(){
-    inkstate = 1;
-}
-function mouseReleased(){
-    inkstate = 0;
+    if(mouseIsPressed){
+        var point = {
+            x : mouseX ,
+            y : mouseY 
+        }
+        realtimePath.push(point);
+        database.ref("/").update({
+            positions :ink
+        });
+    
+    }
+        stroke(100,200,150);
+        strokeWeight(10);
+        noFill();
+        for(var i = 0 ; i   < ink.length ; i++){
+            var path = ink[i];
+            beginShape();
+            for(var t = 0 ; t   < path.length ;t++){
+                vertex(path[t].x,path[t].y)
+            }
+            endShape();
+        }
 }

@@ -1,12 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
+   
     <script src="p5.min.js"></script>
     <script src="p5.dom.min.js"></script>
     <script src="p5.sound.min.js"></script>
     <script src="matter.js"></script>
-    <script src="Ink.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-database.js"></script>
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyC6J-ON37Loq70RlIHR9L2Uc9-L34NhQMU",
+        authDomain: "canvas-51813.firebaseapp.com",
+        databaseURL: "https://canvas-51813.firebaseio.com",
+        projectId: "canvas-51813",
+        storageBucket: "canvas-51813.appspot.com",
+        messagingSenderId: "347608291744",
+        appId: "1:347608291744:web:035b326c92c7a97435ecc5"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
 
+    </script>
+ 
     <link rel="stylesheet" type="text/css" href="style.css">
     <meta charset="utf-8">
 </head>
